@@ -105,8 +105,8 @@ public class Admin {
 						
 						
 						System.out.println("Enter account phno");
-		                int accphno=Integer.parseInt(buf.readLine());
-						preparedStatement.setInt(4, accphno);
+		               String accphno=(buf.readLine());
+						preparedStatement.setString(4, accphno);
 						
 						 
 						 preparedStatement.executeUpdate();
@@ -125,21 +125,21 @@ public class Admin {
 				}
 				public void viewaccountant(BufferedReader buf) 
 				{
-					String query="select username from feedue.admin where password=?";
+					String query="select accid from feedue.accdetails where accphno=?";
 					try
 					{
 						Connection conn=DriverManager.getConnection(url);
 						System.out.println("step1");
 						PreparedStatement preparedStatement=conn.prepareStatement(query);
 						System.out.println("step2");
-						System.out.println("Enter password");
-						String password=buf.readLine();
-						preparedStatement.setString(1, password);
+						System.out.println("Enter account phnum");
+						String accphno=(buf.readLine());
+						preparedStatement.setString(1, accphno);
 						ResultSet resultSet=preparedStatement.executeQuery();
 						while(resultSet.next())
 						{
-							String username=resultSet.getString("user name");
-							System.out.println("login successfully"+username);
+							int accid=resultSet.getInt("accid");
+							System.out.println("login successfully"+accid);
 						}
 						conn.close();
 					}

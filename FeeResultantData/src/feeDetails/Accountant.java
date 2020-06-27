@@ -144,7 +144,7 @@ public class Accountant {
 public void editstudent(BufferedReader buf)
 {
 	
-	String query="update student  set student_name=? where student_city=?";
+	String query="update feedue.student  set student_name=? where student_city=?";
 	try
 	{
 		Connection conn=DriverManager.getConnection(url);
@@ -152,7 +152,7 @@ public void editstudent(BufferedReader buf)
 		PreparedStatement preparedStatement=conn.prepareStatement(query);
 		System.out.println("step2");
 		preparedStatement.setString(1,"shiva");
-		preparedStatement.setString(2,"hyderabad");
+		preparedStatement.setString(2,"hyd");
 		System.out.println(preparedStatement.executeUpdate() + " No of Records Updated");
 		System.out.println("step3");
 		conn.close();
